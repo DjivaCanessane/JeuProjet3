@@ -17,8 +17,11 @@ class Game {
     
     func startGame() {
         print("Hello, welcome into the Game!")
+        
         askPlayerName(index: 0)
         askPlayerName(index: 1)
+        
+        
     }
 
     func askPlayerName(index: Int)  {
@@ -27,5 +30,6 @@ class Game {
         guard playerName != "" else { return askPlayerName(index: index) }
         players[index].name = playerName
     }
+    
     
 }

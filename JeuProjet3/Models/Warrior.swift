@@ -19,7 +19,18 @@ class Warrior{
         self.name = name
         self.weapon = weapon
     }
+    
+    func heal() {
+        let healPoints: Int = self.life > 70 ? 100 - self.life : 30
+        self.life += healPoints
+    }
+    
+    func rest() {
+        let staminaPoints: Int = self.stamina > 80 ? 100 - self.stamina : 20
+        self.stamina += staminaPoints
+    }
 }
+
 extension Warrior: Hashable, Equatable {
     static func == (lhs: Warrior, rhs: Warrior) -> Bool {
         return lhs.id == rhs.id
