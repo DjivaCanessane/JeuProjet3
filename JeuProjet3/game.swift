@@ -10,18 +10,22 @@ import Foundation
 
 class Game {
     
-    var playerOneName: String = ""
-
+    var players: [Player] = [
+        Player(name: nil, warriors: []),
+        Player(name: nil, warriors: [])
+    ]
+    
     func startGame() {
         print("Hello, welcome into the Game!")
-        askPlayerName()   
+        askPlayerName(index: 0)
+        askPlayerName(index: 1)
     }
 
-    func askPlayerName()  {
-        print("Please enter a name")
-        guard let playerOneNameBis = readLine() else {
-            return askPlayerName()
-        }
-        playerOneName = playerOneNameBis
+    func askPlayerName(index: Int)  {
+        print("Please enter a name for player \(index + 1)")
+        guard let playerName = readLine() else { return askPlayerName(index: index) }
+        guard playerName != "" else { return askPlayerName(index: index) }
+        players[index].name = playerName
     }
+    
 }
