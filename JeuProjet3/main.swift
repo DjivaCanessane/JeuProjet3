@@ -10,3 +10,7 @@ import Foundation
 
 var game = Game()
 game.initializePlayersWithWarriors()
+
+func warning(text: String) {
+    print("\n\n⚠️ \(text) ⚠️")
+}

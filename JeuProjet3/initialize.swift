@@ -33,12 +33,13 @@ class Game {
     }
 
     func askPlayerName(index: Int)  {
+        
         print("\nPlease enter a name for player \(index + 1)")
         guard let playerName = readLine() else {
-            print("\n\n⚠️ Player name can't be nil ! ⚠️")
+            warning(text: "Player name can't be nil !")
             return askPlayerName(index: index) }
         guard playerName != "" else {
-            print("\n\n⚠️ Player name can't be empty ! ⚠️")
+            warning(text: "Player name can't be empty !")
             return askPlayerName(index: index) }
         players.append(Player(name: playerName))
         
@@ -47,10 +48,10 @@ class Game {
     func askPlayerWarriorName(playerIndex: Int, warriorIndex: Int) -> String {
         print("\nPlayer \(playerIndex + 1), enter a name for warrior \(warriorIndex + 1)")
         guard let warriorName = readLine() else {
-            print("\n\n⚠️ Warrior name can't be nil ! ⚠️")
+            warning(text: "Warrior name can't be nil !")
             return askPlayerWarriorName(playerIndex: playerIndex, warriorIndex: warriorIndex) }
         guard warriorName != "" else {
-            print("\n\n⚠️ Warrior name can't be empty ! ⚠️")
+            warning(text: "Warrior name can't be empty !")
             return askPlayerWarriorName(playerIndex: playerIndex, warriorIndex: warriorIndex) }
         return warriorName
     }
@@ -62,13 +63,13 @@ class Game {
             + "\n3.Gun")
         
         guard let warriorWeapon = readLine() else {
-            print("\n\n⚠️ Warrior weapon can't be nil ! ⚠️")
+            warning(text: "Warrior weapon can't be nil !")
             return askPlayerWarriorWeapon(playerIndex: playerIndex, warriorIndex: warriorIndex, warriorName: warriorName) }
         guard let warriorWeaponIndex = Int(warriorWeapon) else {
-            print("\n\n⚠️ Select a weapon by entering a number ! ⚠️")
+            warning(text: "Select a weapon by entering a number !")
             return askPlayerWarriorWeapon(playerIndex: playerIndex, warriorIndex: warriorIndex, warriorName: warriorName) }
         guard 1...3 ~= warriorWeaponIndex else {
-            print("\n\n⚠️ Enter a number between 1 to 3 ! ⚠️")
+            warning(text: "Enter a number between 1 to 3 !")
             return askPlayerWarriorWeapon(playerIndex: playerIndex, warriorIndex: warriorIndex, warriorName: warriorName) }
         return Weapon(type: WeaponType.allCases[warriorWeaponIndex - 1])
     }
