@@ -9,4 +9,4 @@
 import Foundation
 
 var game = Game()
-game.startGame()
+game.initializePlayersWithWarriors()

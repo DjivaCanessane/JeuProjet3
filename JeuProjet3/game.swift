@@ -13,7 +13,7 @@ class Game {
     var players: [Player] = []
     
     
-    func startGame() {
+    func initializePlayersWithWarriors() {
         print("🎊 Hello, welcome into the Game! 🎊")
         
         askPlayerName(index: 0)
