@@ -25,7 +25,7 @@ class Warrior{
         self.life += healPoints
     }
     
-    func rest() {
+    func meditate() {
         let staminaPoints: Int = self.stamina > 80 ? 100 - self.stamina : 20
         self.stamina += staminaPoints
     }

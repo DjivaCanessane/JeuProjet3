@@ -30,6 +30,8 @@ class Game {
             let warriorWeapon: Weapon = askPlayerWarriorWeapon(playerIndex: 1, warriorIndex: i, warriorName: warriorNameBuffer)
             createWarrior(playerIndex: 1, warriorName: warriorNameBuffer, warriorWeapon: warriorWeapon)
         }
+        
+        Battle().battle(players: players)
     }
 
     func askPlayerName(index: Int)  {
@@ -46,7 +48,7 @@ class Game {
     }
     
     func askPlayerWarriorName(playerIndex: Int, warriorIndex: Int) -> String {
-        print("\nPlayer \(playerIndex + 1), enter a name for warrior \(warriorIndex + 1)")
+        print("\n\(players[playerIndex].name), enter a name for warrior \(warriorIndex + 1)")
         guard let warriorName = readLine() else {
             warning(text: "Warrior name can't be nil !")
             return askPlayerWarriorName(playerIndex: playerIndex, warriorIndex: warriorIndex) }
@@ -57,10 +59,10 @@ class Game {
     }
     
     func askPlayerWarriorWeapon(playerIndex: Int, warriorIndex: Int, warriorName: String) -> Weapon {
-        print("\nPlayer \(playerIndex + 1), select a weapon, by entering a number, for warrior \(warriorIndex + 1) among:"
-            + "\n1.Sword"
-            + "\n2.Arc"
-            + "\n3.Gun")
+        print("\n\(players[playerIndex].name), select a weapon, by entering a number, for \(warriorName), among:"
+            + "\n1. Sword"
+            + "\n2. Arc"
+            + "\n3. Gun")
         
         guard let warriorWeapon = readLine() else {
             warning(text: "Warrior weapon can't be nil !")
