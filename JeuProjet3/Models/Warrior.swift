@@ -10,7 +10,6 @@ import Foundation
 
 class Warrior{
     var name: String
-    var id: String = UUID().uuidString
     var weapon: Weapon
     var life: Int = 100
     var stamina: Int = 100
@@ -28,17 +27,5 @@ class Warrior{
     func meditate() {
         let staminaPoints: Int = self.stamina > 80 ? 100 - self.stamina : 20
         self.stamina += staminaPoints
-    }
-}
-
-extension Warrior: Hashable, Equatable {
-    static func == (lhs: Warrior, rhs: Warrior) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
-    
-    func hash(into hasher: inout Hasher){
-        hasher.combine(id.hashValue)
-        
     }
 }
