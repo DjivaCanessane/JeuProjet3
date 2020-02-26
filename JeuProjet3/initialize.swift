@@ -11,7 +11,7 @@ import Foundation
 class Initialize {
     
     var players: [Player] = []
-    
+    var names: [String] = []
     
     func initializePlayersWithWarriors() {
         print("🎊 Hello, welcome into the Game! 🎊")
@@ -43,6 +43,11 @@ class Initialize {
         guard playerName != "" else {
             warning(text: "Player name can't be empty !")
             return askPlayerName(index: index) }
+        if (names.contains(playerName)) {
+            warning(text: "This name is already used, please insert another name")
+            return askPlayerName(index: index)
+        }
+        names.append(playerName)
         players.append(Player(name: playerName))
         
     }
@@ -55,6 +60,11 @@ class Initialize {
         guard warriorName != "" else {
             warning(text: "Warrior name can't be empty !")
             return askPlayerWarriorName(playerIndex: playerIndex, warriorIndex: warriorIndex) }
+        if (names.contains(warriorName)) {
+            warning(text: "This name is already used, please insert another name")
+            return askPlayerWarriorName(playerIndex: playerIndex, warriorIndex: warriorIndex)
+        }
+        names.append(warriorName)
         return warriorName
     }
     
