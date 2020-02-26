@@ -15,7 +15,7 @@ class Weapon {
     init(type: WeaponType) {
         
         switch type {
-        case .heavySword:
+        case .sword:
             self.damage = 35
             self.consumedEnergy = 40
         case .arc:

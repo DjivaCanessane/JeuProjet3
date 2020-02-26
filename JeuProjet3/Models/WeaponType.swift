@@ -9,5 +9,5 @@
 import Foundation
 
 enum WeaponType: CaseIterable{
-    case heavySword, arc, gun
+    case sword, arc, gun
 }

@@ -9,10 +9,10 @@
 import Foundation
 
 class Player{
-    var name: String?
-    var warriors: [Warrior]
-    init(name: String?, warriors:[Warrior]) {
+    var name: String
+    var warriors: [Warrior] = []
+    
+    init(name: String) {
         self.name = name
-        self.warriors = warriors
     }
 }
