@@ -10,7 +10,7 @@ import Foundation
 
 class EndGame {
     
-    func endGame() {
+    func endGame(players: [Player], looserPlayerIndex: Int, round: Int) {
         print("endGame")
     }
     

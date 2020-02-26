@@ -15,4 +15,12 @@ class Player{
     init(name: String) {
         self.name = name
     }
+    
+    func isDead() -> Bool {
+        let w1IsDead: Bool = warriors[0].life == 0
+        let w2IsDead: Bool = warriors[1].life == 0
+        let w3IsDead: Bool = warriors[2].life == 0
+        
+        return w1IsDead && w2IsDead && w3IsDead
+    }
 }

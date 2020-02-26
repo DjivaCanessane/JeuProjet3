@@ -12,7 +12,7 @@ class Battle {
     
     var round: Int = 0
     func battle(players: [Player]) {
-        print("Let the battle begin !")
+        print("\n\n\nLet the battle begin !")
         while !isGameOver(players: players) {
             round += 1
             let playerIndex: Int = round % 2 != 0 ? 0 : 1
@@ -20,20 +20,12 @@ class Battle {
             let action: Int = askAction(warrior: warrior)
             doAction(action: action, warrior: warrior, playerToAttack: playerIndex == 0 ? players[1] : players[0], players: players)
         }
-        EndGame().endGame()
+        let looserPlayerIndex: Int = players[0].isDead() ? 0 : 1
+        EndGame().endGame(players: players, looserPlayerIndex: looserPlayerIndex, round: round)
     }
     
     func isGameOver(players: [Player]) -> Bool {
-        //Player One warriors dead ?
-        let isP1W1Dead: Bool = players[0].warriors[0].life == 0
-        let isP1W2Dead: Bool = players[0].warriors[1].life == 0
-        let isP1W3Dead: Bool = players[0].warriors[2].life == 0
-        //Player Two warriors dead ?
-        let isP2W1Dead: Bool = players[1].warriors[0].life == 0
-        let isP2W2Dead: Bool = players[1].warriors[1].life == 0
-        let isP2W3Dead: Bool = players[1].warriors[2].life == 0
-        
-        return (isP1W1Dead && isP1W2Dead && isP1W3Dead) || (isP2W1Dead && isP2W2Dead && isP2W3Dead)
+        return players[0].isDead() || players[1].isDead()
     }
     
     func chooseWarrior(player: Player) -> Warrior {
@@ -51,7 +43,7 @@ class Battle {
             warning(text: "Enter a number between 1 to 3 !")
             return chooseWarrior(player: player) }
         if (player.warriors[warriorIndex - 1].life == 0) {
-            print("This warrior is dead, let him him rest in peace...")
+            warning(text: "This warrior is dead, let him him rest in peace...")
             return chooseWarrior(player: player)
         }
         return player.warriors[warriorIndex - 1]
