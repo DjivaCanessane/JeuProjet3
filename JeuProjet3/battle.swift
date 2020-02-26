@@ -50,6 +50,10 @@ class Battle {
         guard 1...3 ~= warriorIndex else {
             warning(text: "Enter a number between 1 to 3 !")
             return chooseWarrior(player: player) }
+        if (player.warriors[warriorIndex - 1].life == 0) {
+            print("This warrior is dead, let him him rest in peace...")
+            return chooseWarrior(player: player)
+        }
         return player.warriors[warriorIndex - 1]
     }
     
@@ -80,6 +84,7 @@ class Battle {
                 doAction(action: reAction, warrior: warrior, playerToAttack: playerToAttack, players: players)
                 return
             }
+            
             attack(playerToAttack: playerToAttack, warrior: warrior)
         case 2:
             if (warrior.stamina == 100) {
@@ -121,10 +126,13 @@ class Battle {
             warning(text: "Enter a number between 1 to 3 !")
             return attack(playerToAttack: playerToAttack, warrior: warrior) }
         
-        
+        if (playerToAttack.warriors[warriorAttackedIndex - 1].life == 0) {
+            warning(text: "This warrior is already dead, please select an another one to attack")
+            return attack(playerToAttack: playerToAttack, warrior: warrior)
+        }
         let oldLife: Int = playerToAttack.warriors[warriorAttackedIndex - 1].life
         let oldStamina: Int = warrior.stamina
-        playerToAttack.warriors[warriorAttackedIndex - 1].life -= warrior.weapon.damage
+        playerToAttack.warriors[warriorAttackedIndex - 1].life -= warrior.weapon.damage > playerToAttack.warriors[warriorAttackedIndex - 1].life ? playerToAttack.warriors[warriorAttackedIndex - 1].life : warrior.weapon.damage
         warrior.stamina -= warrior.weapon.consumedEnergy
         print("\(playerToAttack.warriors[warriorAttackedIndex - 1].name) HP: \(oldLife) -> \(playerToAttack.warriors[warriorAttackedIndex - 1].life)"
             + "\n\(warrior.name) Stm: \(oldStamina) -> \(warrior.stamina)\n\n")

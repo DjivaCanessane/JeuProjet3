@@ -11,7 +11,7 @@ import Foundation
 class EndGame {
     
     func endGame() {
-        
+        print("endGame")
     }
     
 }
