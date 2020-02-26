@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Game {
+class Initialize {
     
     var players: [Player] = []
     

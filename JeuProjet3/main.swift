@@ -8,7 +8,7 @@
 
 import Foundation
 
-Game().initializePlayersWithWarriors()
+Initialize().initializePlayersWithWarriors()
 
 func warning(text: String) {
     print("\n\n⚠️ \(text) ⚠️")
