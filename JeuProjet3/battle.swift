@@ -22,7 +22,7 @@ class Battle {
             round += 1
             let playerIndex: Int = round % 2 != 0 ? 0 : 1
             let warrior: Warrior = chooseWarrior(player: players[playerIndex])
-            surpriseChest(number: Int.random(in: 0...2), warrior: warrior)
+            surpriseChest(number: Int.random(in: 0...4), warrior: warrior)
             let action: Int = askAction(warrior: warrior)
             doAction(action: action, warrior: warrior, playerToAttack: playerIndex == 0 ? players[1] : players[0], players: players)
         }
@@ -38,7 +38,12 @@ class Battle {
     //Méthode qui génère un coffre aléatoirement
     func surpriseChest(number: Int, warrior: Warrior) {
         guard number == 2 else { return }
-        
+        print("A chest has appeared, let see what it contains...")
+        let newWeapon: Weapon = Weapon(type: WeaponType.allCases[Int.random(in: 0...2)])
+        print("Your warrior got a new weapon:"
+            + "\nDamage: \(newWeapon.damage)"
+            + "\nStamina consumed: \(newWeapon.consumedEnergy)")
+        warrior.weapon = newWeapon
     }
     
     //Méthode pour choir un combattant de son équipe
@@ -85,7 +90,7 @@ class Battle {
     func doAction(action: Int, warrior: Warrior, playerToAttack: Player, players: [Player]) {
         let reAction: Int
         switch action {
-        //attaquer
+        //Attaquer
         case 1:
             if (warrior.stamina < warrior.weapon.consumedEnergy) {
                 //Si le combattant n'a pas suffisamment d'endurance pour attaquer nous l'invitons à re choisir une autre action
