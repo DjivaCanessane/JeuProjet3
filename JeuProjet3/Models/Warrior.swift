@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Modèle d'un combattant avec ses méthodes
 class Warrior{
     var name: String
     var weapon: Weapon

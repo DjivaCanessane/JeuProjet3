@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Modèle d'une arme
 class Weapon {
     var damage: Int
     var consumedEnergy: Int

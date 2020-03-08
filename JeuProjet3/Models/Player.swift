@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Modèle d'un joueur
 class Player{
     var name: String
     var warriors: [Warrior] = []

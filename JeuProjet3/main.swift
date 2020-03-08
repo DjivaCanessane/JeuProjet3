@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Début du code
 Initialize().initializePlayersWithWarriors()
 
 func warning(text: String) {
