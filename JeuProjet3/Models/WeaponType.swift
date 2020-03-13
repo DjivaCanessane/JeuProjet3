@@ -8,7 +8,7 @@
 
 import Foundation
 
-//Les différents types d'armes
+//The different types of weapons
 enum WeaponType: CaseIterable{
     case sword
     case arc

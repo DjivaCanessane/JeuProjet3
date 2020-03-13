@@ -8,30 +8,30 @@
 
 import Foundation
 
-//Classe Initialize permet d'initialiser les deux joueurs avec leur combattants et armes
+//Class Initialize allows to initialize the two players with their fighters and weapons
 class Initialize {
     
     var players: [Player] = []
     
-    //names permet de vérifier que chaque nom est unique
+    //names verifies that each name is unique
     var names: [String] = []
     
-    //Methode principale de la classe
+    //Main class method
     func initializePlayersWithWarriors() {
         print("🎊 Hello, welcome into the Game! 🎊")
         
-        //Demande des noms pour les joueurs
+        //Request names for players
         askPlayerName(index: 0)
         askPlayerName(index: 1)
         
-        //Demande des combattants et armes du joueur 1
+        //Request for player 1 fighters and weapons
         for i in 0...2 {
             let warriorNameBuffer: String = askPlayerWarriorName(playerIndex: 0, warriorIndex: i)
             let warriorWeapon: Weapon = askPlayerWarriorWeapon(playerIndex: 0, warriorIndex: i, warriorName: warriorNameBuffer)
             createWarrior(playerIndex: 0, warriorName: warriorNameBuffer, warriorWeapon: warriorWeapon)
         }
         
-        //Demande des combattants et armes du joueur 2
+        //Request for player 2 fighters and weapons
         for i in 0...2 {
             let warriorNameBuffer: String = askPlayerWarriorName(playerIndex: 1, warriorIndex: i)
             let warriorWeapon: Weapon = askPlayerWarriorWeapon(playerIndex: 1, warriorIndex: i, warriorName: warriorNameBuffer)
@@ -41,7 +41,7 @@ class Initialize {
         Battle().battle(players: players)
     }
     
-    //Méthode pour demander le nom du joueur
+    //Method for requesting player name
     func askPlayerName(index: Int)  {
         
         print("\nPlease enter a name for player \(index + 1)")
@@ -60,7 +60,7 @@ class Initialize {
         
     }
     
-    //Méthode pour demander le nom du combattant
+    //Method for requesting the name of the combatant
     func askPlayerWarriorName(playerIndex: Int, warriorIndex: Int) -> String {
         print("\n\(players[playerIndex].name), enter a name for warrior \(warriorIndex + 1)")
         guard let warriorName = readLine() else {
@@ -77,7 +77,7 @@ class Initialize {
         return warriorName
     }
     
-    //Méthode pour demander l'arme du combattant
+    //Method for requesting the combatant's weapon
     func askPlayerWarriorWeapon(playerIndex: Int, warriorIndex: Int, warriorName: String) -> Weapon {
         print("\n\(players[playerIndex].name), select a weapon, by entering a number, for \(warriorName), among:"
             + "\n1. Sword"
@@ -97,7 +97,7 @@ class Initialize {
     }
     
     
-    //Méthode pour initialiser un combattant avec son arme et associer au joueur
+    //Method for initializing a fighter with his weapon and associating it with the player
     func createWarrior(playerIndex: Int, warriorName: String, warriorWeapon: Weapon) {
         players[playerIndex].warriors.append(Warrior(name: warriorName, weapon: warriorWeapon))
     }
